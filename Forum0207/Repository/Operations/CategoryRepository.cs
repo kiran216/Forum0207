@@ -1,0 +1,65 @@
+﻿using Forum0207.Models;
+using Forum0207.Models;
+using Forum0207.Repository.DataProcessor;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+
+namespace Forum0207.Repository.Operations
+{
+    public class CategoryRepository : IForumRepository
+    {
+        public List<Category> GetCategories()
+        {
+            var categories = new List<Category>();
+            try
+            {
+                var dataSet = DataHelper.ExecuteDataSet(DbConstants.SpGetCategories);
+                foreach (DataRow data in dataSet.Tables[0].Rows)
+                {
+                    categories.Add(new Category
+                    {
+                        CategoryGuid = data[DbConstants.CategoryGuid].ToString(),
+                        CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]),
+                        CategoryName = data[DbConstants.CategoryName].ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return categories;
+        }
+
+        public Category GetCategory(int id)
+        {
+            var category = new Category();
+            try
+            {
+                var dataSet = DataHelper.ExecuteCommand(DbConstants.SpGetCategory, new SqlParameterHolder()
+                    {
+                        Parameter = DbConstants.CategoryId,
+                        ParameterValue = id,
+                        Direction = ParameterDirection.Input
+                    });
+                foreach (DataRow data in dataSet.Tables[0].Rows)
+                {
+                    category.CategoryGuid = data[DbConstants.CategoryGuid].ToString();
+                    category.CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]);
+                    category.CategoryName = data[DbConstants.CategoryName].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return category;
+        }
+
+    }
+
+
+}

@@ -1,0 +1,28 @@
+﻿app.service('categoryService', categoryService);
+categoryService.$inject = ['$http', '$q', 'helperService'];
+
+function categoryService($http, $q, helperService) {
+
+    var urlBase = '/api/categories';    
+
+    this.getcategories = function () {
+        return $http.get(urlBase);
+    };
+    this.getcategory = function (id) {
+        return $http.get(urlBase + '/' + id);
+    };
+
+    this.insertcategory = function (cust) {
+        return $http.post(urlBase, cust);
+    };
+
+    this.updatecategory = function (cust) {
+        return $http.put(urlBase + '/' + cust.ID, cust)
+    };
+
+    this.deletecategory = function (id) {
+        return $http.delete(urlBase + '/' + id);
+    };
+
+
+}
