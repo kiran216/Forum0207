@@ -1,7 +1,7 @@
 ﻿app.service('categoryService', categoryService);
-categoryService.$inject = ['$http', '$q', 'helperService'];
+categoryService.$inject = ['$http', '$q' ];
 
-function categoryService($http, $q, helperService) {
+function categoryService($http, $q) {
 
     var urlBase = '/api/categories';    
 

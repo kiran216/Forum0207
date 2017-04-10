@@ -7,8 +7,9 @@ namespace Forum0207.Models
 {
     public class Category
     {
-        public string CategoryGuid {get; set;}
         public int CategoryId {get; set;}
         public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+
     }
 }

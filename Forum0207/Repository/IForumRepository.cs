@@ -9,8 +9,18 @@ namespace Forum0207.Repository
 {
     public interface IForumRepository
     {
+        
+    }
+    public interface ICategoryRepository
+    {
         List<Category> GetCategories();
 
         Category GetCategory(int id);
+
+        //Category InsertCustomer(Category cust);
+
+        //bool UpdateCustomer(Category category);
+
+        //bool DeleteCustomer(int id);
     }
 }

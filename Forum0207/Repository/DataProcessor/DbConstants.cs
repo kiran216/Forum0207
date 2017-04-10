@@ -15,7 +15,7 @@ namespace Forum0207.Repository.DataProcessor
         #endregion
 
         #region<<SP Params>>
-        public const string CategoryGuid ="CategoryGuid";
+        public const string CategoryDescription = "CategoryDescription";
         public const string CategoryId = "CategoryId";
         public const string CategoryName = "CategoryName";
         #endregion

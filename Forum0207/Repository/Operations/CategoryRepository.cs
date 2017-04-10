@@ -1,5 +1,4 @@
 ﻿using Forum0207.Models;
-using Forum0207.Models;
 using Forum0207.Repository.DataProcessor;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Web;
 
 namespace Forum0207.Repository.Operations
 {
-    public class CategoryRepository : IForumRepository
+    public class CategoryRepository : ICategoryRepository
     {
         public List<Category> GetCategories()
         {
@@ -21,7 +20,7 @@ namespace Forum0207.Repository.Operations
                 {
                     categories.Add(new Category
                     {
-                        CategoryGuid = data[DbConstants.CategoryGuid].ToString(),
+                        CategoryDescription = data[DbConstants.CategoryDescription].ToString(),
                         CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]),
                         CategoryName = data[DbConstants.CategoryName].ToString()
                     });
@@ -47,7 +46,7 @@ namespace Forum0207.Repository.Operations
                     });
                 foreach (DataRow data in dataSet.Tables[0].Rows)
                 {
-                    category.CategoryGuid = data[DbConstants.CategoryGuid].ToString();
+                    category.CategoryDescription = data[DbConstants.CategoryDescription].ToString();
                     category.CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]);
                     category.CategoryName = data[DbConstants.CategoryName].ToString();
                 }

@@ -72,7 +72,7 @@ namespace Forum0207.Repository.DataProcessor
         {
             get
             {
-                return new DatabaseProviderFactory().Create("EdtDbConnection");
+                return new DatabaseProviderFactory().Create("DbConnection");
             }
         }
 
